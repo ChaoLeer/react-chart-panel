@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import logo from '../logo.svg'
 import Texty from 'rc-texty';
 import 'rc-texty/assets/index.css';
+import logo from '../logo.svg'
+import './Header.css';
 
 class Header extends Component {
   getEnter = (e) => {

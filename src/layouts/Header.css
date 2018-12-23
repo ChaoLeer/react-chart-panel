@@ -1,0 +1,21 @@
+
+.app-logo {
+  animation: app-logo-spin infinite 20s linear;
+  height: 4vmin;
+  min-height: 50px;
+}
+
+.app-header {
+  overflow: hidden;
+  background-color: #282c34;
+  /* height: 6vmin; */
+  height: 58px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* font-size: calc(10px + 2vmin); */
+  font-size: 28px;
+  color: #61dafb;
+  padding-left: 10px;
+}
