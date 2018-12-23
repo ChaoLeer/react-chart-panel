@@ -1,0 +1,29 @@
+.app {
+  text-align: center;
+}
+
+
+.app-link {
+  color: #61dafb;
+}
+
+@keyframes app-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app-aside{
+  height: calc(100vh - 58px);
+}
+.app-aside__taglist {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+.app-aside__taglist .ant-tag {
+  margin-bottom: 6px;
+}
