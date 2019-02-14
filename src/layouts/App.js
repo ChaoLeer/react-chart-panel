@@ -3,31 +3,46 @@ import './App.css';
 import CHeader from  './Header';
 import CpTagList from './TagList';
 import { Layout } from 'antd';
+import * as ChartList from '../charts'
 const { Sider, Content } = Layout;
 
+const RenderChart = (chart) => {
+  console.log(chart, ChartList.default.Basebar)
+  let Basebar = ChartList.default.Basebar
+  return (
+    <Basebar/>
+  )
+}
 class App extends Component {
   state = {
-    checked: true
+    checked: true,
+    chartList: ['n', 'b', 'c']
   };
 
+  changeChart = (item) => {
+    console.log('测试', item)
+  }
+  
   render() {
     return (
       <Layout className="app">
         <CHeader/>
         <Layout className="app-main">
           <Sider className="app-aside">
-            <CpTagList/>
+            <CpTagList changeChart={this.changeChart.bind(this)}/>
           </Sider>
           <Content
           >
-            Content
+            {this.state.chartList.map((chart, idx) => (
+              // this.renderChart.bind(this, chart)
+              <RenderChart chart={chart} key={chart + idx}></RenderChart>
+            ))}
           </Content>
         </Layout>
       </Layout>
     );
   }
 }
-
 
 
 

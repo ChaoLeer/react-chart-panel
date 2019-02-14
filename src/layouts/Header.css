@@ -6,6 +6,10 @@
 }
 
 .app-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 8;
   overflow: hidden;
   background-color: #282c34;
   /* height: 6vmin; */

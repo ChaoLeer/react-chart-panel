@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Icon, Tag } from 'antd';
+
 class TagList extends Component {
   state = {
     list: [{
       icon: 'pie-chart',
-      checked: true,
+      checked: false,
       label: '饼图'
     }, {
       checked: false,
@@ -14,23 +15,34 @@ class TagList extends Component {
       label: '折线图'
     }]
   };
-
+  /**
+   * 点击tag 执行动作
+   */
   handleChange = (idx, item, e) => {
-    let {list} = this.state
+    let vm = this
+    let {list} = vm.state
+    let checkItm = null
+    console.log(this.props)
     if (item.checked) {
       return
     } else {
       list = list.map((l,i) => {
+        i === idx && (checkItm = l)
         return {
           ...l,
           checked: i === idx
         }
       })
+      // 更新图表
+      vm.props.changeChart(checkItm)
     }
-    this.setState({
+    vm.setState({
       list
     })
   }
+  // changeChart = (item) => {
+  //   console.log('测试', item)
+  // }
   // onClick={e => this.handleChange(idx, item, e)}>
 
   render() {
@@ -42,7 +54,7 @@ class TagList extends Component {
           <Icon type={item.icon || 'area-chart'}/>
           &nbsp;
           {item.label}
-        </Tag>
+        </Tag>                                                                                                                                                                                              
       })}
     </div>)
   }

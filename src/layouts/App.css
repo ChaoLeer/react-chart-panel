@@ -16,8 +16,22 @@
   }
 }
 
+.app-main {
+  margin-top: 58px;
+  padding-left: 200px;
+  flex: 1;
+}
 .app-aside{
-  height: calc(100vh - 58px);
+  position: fixed;
+  left: 0;
+  top: 58px;
+  /* height: calc(100vh - 58px); */
+  bottom: 0;
+  z-index: 8;
+}
+.ant-layout-content {
+  flex: 1;
+  overflow: hidden;
 }
 .app-aside__taglist {
   display: flex;
