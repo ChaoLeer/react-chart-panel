@@ -20,7 +20,7 @@ const scale = [{
 export default class App extends React.Component {
   render() {
     return (
-      <Chart className="cp-chart" forceFit height={300} data={data} scale={scale}>
+      <Chart class="cp-chart" renderer='svg' forceFit={!this.props.width} width={this.props.width || 100} height={this.props.height || 300} data={data} scale={scale} padding={[50]}>
         <Tooltip />
         <Axis />
         <Bar position="year*sales" />
