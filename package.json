@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "antd": "^3.11.4",
+    "echarts": "^4.1.0",
+    "html2canvas": "^1.0.0-alpha.12",
     "ludash": "^0.1.0-pre",
     "rc-texty": "^0.2.0",
     "react": "^16.6.3",

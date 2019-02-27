@@ -7,7 +7,7 @@ import * as ChartList from '../charts';
 import GridLayout from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
-
+import Html2canvasChart from '../charts/echarts/Export.js'
 const { Sider, Content } = Layout;
 
 
@@ -56,6 +56,7 @@ class App extends Component {
           </Sider>
           <Content
           >
+            <Html2canvasChart/>
             <GridLayout 
               onLayoutChange={this.layoutChange.bind(this)}
               onResizeStop={this.layoutResizeStop.bind(this)}
