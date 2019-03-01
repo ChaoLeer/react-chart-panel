@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import RCEcharts from '../../lib/echarts.js'
-import drawCanvas from '../../lib/html2canvas.js'
-import './Export.css'
+import RCEcharts from '../lib/echarts.js'
+import drawCanvas from '../lib/html2canvas.js'
+import './Html2canvas.css'
 
 class Html2canvasChart extends Component {
   constructor(props) {
@@ -44,9 +44,8 @@ class Html2canvasChart extends Component {
     let option = {
       title: [
         {
-          text: '图',
-          left: 'center',
-          top: 0
+          text: '',
+          left: 'center'
         },{
           text: 'S',
           left: 'center',
@@ -176,8 +175,11 @@ class Html2canvasChart extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.exportdom.bind(this, '#echartDom')}>测试html2canvas</button>
-        <div id="echartDom" className="echart-dom"></div>
+        <button onClick={this.exportdom.bind(this, '#wrapper')}>测试html2canvas</button>
+        <div id="wrapper" className="dom-wrapper">
+          <h2>生成图片</h2>
+          <div id="echartDom" className="echart-dom"></div>
+        </div>
         <img src={this.state.imgSrc} alt="img" width="600"/>
       </div>
     )

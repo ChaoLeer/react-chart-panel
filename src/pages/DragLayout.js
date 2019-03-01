@@ -1,44 +1,64 @@
 import React, { Component } from 'react';
-import './App.css';
-import CHeader from  './Header';
-import { Layout } from 'antd';
+import './DragLayout.css';
+import CpTagList from '../components/TagList';
 import * as ChartList from '../charts';
-import Html2canvasChart from '../pages/Html2canvas.js'
-import DragLayout from '../pages/DragLayout.js'
-import {BrowserRouter as Router, Route, NavLink, Switch  } from 'react-router-dom'
-const { Sider, Content } = Layout;
+import GridLayout from 'react-grid-layout';
+import 'react-grid-layout/css/styles.css';
+import 'react-resizable/css/styles.css';
+import axios from 'axios'
 
-function RNavLink(props) {
-  return (
-    <li className="nav-item">
-      <NavLink {...props}/>
-    </li>
-  );
-}
 class App extends Component {
+  state = {
+    checked: true,
+    chartList: [
+      {i: 'a', x: 0, y: 0, w: 6, h: 3},
+      {i: 'b', x: 6, y: 0, w: 6, h: 6},
+      {i: 'c', x: 0, y: 6, w: 6, h: 6}
+    ]
+  };
 
+  changeChart = (item) => {
+    console.log('测试', item)
+  }
+  creatChart = (chart) => {
+    console.log(chart, ChartList.default.Basebar)
+    let Basebar = ChartList.default.Basebar
+    return (
+      <div key={chart['i']} data-grid={chart}>{chart.h * 30}
+        <Basebar height={chart.h * 30} width={chart.w * 100}/>
+      </div>
+    )
+  }
+  layoutChange = () => {
+    console.log('layout change')
+    let eventResize = new Event('resize')
+    window.dispatchEvent(eventResize)
+  }
+  layoutResizeStop = (nextChartList) => {
+    console.log('layout resize stop', nextChartList)
+    let eventResize = new Event('resize')
+    window.dispatchEvent(eventResize)
+    this.setState({
+      chartList: [...nextChartList]
+    })
+  }
   render() {
     return (
-      <Router>
-        <Layout className="app">
-          <CHeader/>
-          <Layout className="app-main">
-            <Sider className="app-aside">
-              <ul>
-                <RNavLink to="/h2c">Html2canvasChart</RNavLink>
-                <RNavLink to="/drag">DragLayout</RNavLink>
-              </ul>
-            </Sider>
-            <Content
-            >
-            <Switch>
-              <Route path="/h2c" component={Html2canvasChart}></Route>
-              <Route path="/drag" component={DragLayout}></Route>
-            </Switch>
-            </Content>
-          </Layout>
-        </Layout>
-      </Router>
+      <div>
+        <CpTagList changeChart={this.changeChart.bind(this)}/>
+        <GridLayout 
+          onLayoutChange={this.layoutChange.bind(this)}
+          onResizeStop={this.layoutResizeStop.bind(this)}
+          className="grid-layout layout"
+          rowHeight={30} width={1200} margin={[0, 0]}>
+          {
+            /* <div className="grid-layout__item" key="a">a</div>
+            <div className="grid-layout__item" key="b">b</div>
+            <div className="react-resizable grid-layout__item" key="c">c</div> */
+          }
+          {this.state.chartList.map((chart, idx) => this.creatChart(chart))}
+        </GridLayout>
+      </div>
     );
   }
 }

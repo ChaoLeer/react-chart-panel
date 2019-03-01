@@ -1,0 +1,14 @@
+.echart-dom {
+  width: 600px;
+  height: 380px;
+}
+.dom-wrapper {
+  width: 600px;
+  margin: 20px auto;
+  background: #efe;
+  border: 1px solid #eaeaea;
+}
+h2 {
+  font-size:14px;
+  color: #787878;
+}
